@@ -17,32 +17,208 @@
 </div>
 
 <div id="main">
-<h2>洛谷题解 P3152 【正整数序列】</h2>
+<h2>干物妹！小埋！第二弹 比赛题解</h2>
 <hr>
-<p>其实为什么要递归，直接整除除就好了</p>
-<p>规律仔细观察一下，答案其实是 a/2 ans次后等于0</p>
-<h2>附上代码QWQ~~~</h2>
-<hr />
+<h2>Problem A（小埋与Chicken rabbit with cages）：</h2>
+<p>此题为典型的鸡兔同笼问题，原意用于照顾蒟蒻，故比较简单，模拟解方程组即可。</p>
+<p>x+y=head </p>
+<p>2x+4y=leg </p>
+<p>附标程：</p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
+namespace UMR/*防抄袭命名空间*/
+{
+    long long a=0,b=0,x=0,y=0;
+    int n;
+};
+using namespace std;
+using namespace UMR;
+int main()
+{
+    cin&gt;&gt;n;
+    for(int d=1;d&lt;=n;d++)
+    {
+        cin&gt;&gt;a&gt;&gt;b;
+        y=(b-2*a)/2;
+        x=a-y;
+        cout&lt;&lt;x&lt;&lt;" "&lt;&lt;y&lt;&lt;endl;
+    }
+}
+</code></pre>
+<hr />
+<h2>Problem B（小埋与哥哥的企划）：</h2>
+<p>采用深度优先搜索（DFS）算法，可以从两个角度出发：</p>
+<p>（1） 以专家为出发点，每个专家要么选择他要么不选择他，当所有专家都确定是否选择后，这代表一种备选的方案，但是这个方案是否可行，需要检查是否所有n个问题都得到解决，在搜索的过程中记录最少的专家数。</p>
+<p>（2） 以问题为出发点，每个问题都可能会有若干个专家可以解决该问题，依次尝试选择每个专家，然后继续下个问题，直到所有问题被解决。</p>
+<p>我们考虑以第（2）个角度出发，尝试如何优化和剪枝，基本思想是：对于某个问题，如果只有一个专家能解决，则该专家是必选的，这是其中一个优化策略。对于尝试对某个问题选择专家时，如果当前已选择的专家数&gt;=已记录的最少专家数-1，则表示即使选择该专家，其最终方案的专家数也不可能少于当前记录的最少专家数，因此不需要尝试选择该专家。</p>
+<p>进一步的优化还可以这样做：在调用搜索函数前，检查每一位专家能解决的问题，如果该专家能解决的问题，另一位专家都能解决，则该专家不需要参与选择，即可以在数组中标志该专家为已选择（注意，虽然将他标志为已选择，但是该专家不计算在已选择专家数中），这样在递归搜索时其搜索的规模将会降低。</p>
+<p>附标程（效率还是比较低）：</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+namespace UMR/*防作弊专用命名空间*/
+{
+    int a[61][7],wo[61],used[61],n,w,dec[61],ans,min;
+};
+using namespace UMR;
+using namespace std;
+void dfs(int step)
+{
+    bool f=true;
+    if (step&gt;n)
+    {
+        if (min&gt;ans)
+        min=ans;
+    }
+    else
+    if (wo[step])
+    dfs(step+1);
+    else
+    if (ans&lt;min)
+    for (int i=1; i&lt;=w; i++)
+    if (used[i]==0)
+    {
+        f=true;
+        for (int j=1; j&lt;=a[i][0]; j++)
+        if (a[i][j]==step)
+        {
+            f=false;
+            break;
+        }
+        if (not f)
+        {
+            used[i]++;
+            ans++;
+            for (int j=1; j&lt;=a[i][0]; j++)
+            wo[a[i][j]]++;
+            dfs(step+1);
+            used[i]--;
+            ans--;
+            for (int j=1; j&lt;=a[i][0]; j++)
+            wo[a[i][j]]--;      
+         }
+    }
+}
+int main ()
+{
+    scanf("%d%d",&amp;n,&amp;w);
+    memset(a,0,sizeof(a));
+    memset(wo,0,sizeof(wo));
+    memset(used,0,sizeof(used));
+    memset(dec,0,sizeof(dec));
+    for (int i=1; i&lt;=w; i++)
+    {
+        scanf("%d",&amp;a[i][0]);
+        for (int j=1; j&lt;=a[i][0]; j++)
+        {
+            scanf("%d",&amp;a[i][j]);
+            if (dec[a[i][j]]!=-1)
+            if (dec[a[i][j]]==0)
+            dec[a[i][j]]=i;
+            else
+            dec[a[i][j]]=-1;
+        }       
+    }
+    ans=0; 
+    for (int i=1; i&lt;=n; i++)
+    if (dec[i]!=0 &amp;&amp; dec[i]!=-1)
+    { 
+        if (used[dec[i]]==0)  
+        {
+            ans++;
+            used[dec[i]]++;
+            for (int j=1; j&lt;=a[dec[i]][0]; j++)
+            wo[a[dec[i]][j]]++;
+        } 
+    }
+    min=2147483647;
+    dfs(1);
+    printf("%d",min);
+    return 0;
+}</code></pre>
+<hr />
+<h2>Problem C（小埋与TSF的密信）：</h2>
+<p>跟普通的加密解密字符一样，只不过这道题要多做一步：</p>
+<h3>统计！</h3>
+<p>根据大量的英文文章字母统计，绝大部分的文章中字母&quot;e&quot;,&quot;E&quot;出现得最多，因此可以在此入手。</p>
+<p>先将输入的加密后的字符进行统计，找出出现得最多的字母，根据这个字母与&quot;e&quot;,&quot;E&quot;的关系，即可按照正常的思路进行解密。</p>
+<p>附标程：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
 using namespace std;
 int main()
 {
-    long long ans=0,a,b,c;
-    cin&gt;&gt;a;
-    if(a==1)/*特判*/
+    char in,str[100000];
+    long long a=1,max=0,ji=0;
+    int zm[256]={0};
+    while((in=getchar())!=EOF)
     {
-        cout&lt;&lt;-1&lt;&lt;endl;
-        return 0;
+        a++;
+        str[a]=in;
+        if(in&lt;='Z'&amp;&amp;in&gt;='A')
+        {
+            zm[in-65]++;
+        }
+        if(in&gt;='a'&amp;&amp;in&lt;='z')
+        {
+            zm[in-97]++;
+        }
     }
-    while(a/2!=0)
+    for(int t=0;t&lt;=26;t++)
     {
-        ans++;
-        a=a/2;
+        if(zm[t]&gt;zm[max])
+        {
+            max=t;
+        }
     }
-    cout&lt;&lt;ans&lt;&lt;endl;/*输出*/
-}</code></pre>
+    ji=max+65-'E';
+    for(int t=2;t&lt;=a;t++)
+    {
+        if(str[t]&gt;='A'&amp;&amp;str[t]&lt;='Z')
+        {
+            if(str[t]-ji&lt;'A')
+            {
+                cout&lt;&lt;(char)(str[t]+26-ji);
+            }
+            else
+            {
+                if(str[t]-ji&gt;'Z')
+                {
+                    cout&lt;&lt;(char)(str[t]-26-ji);
+                }
+                else
+                {
+                    cout&lt;&lt;(char)(str[t]-ji);
+                }               
+            }           
+            continue;
+        }
+        if(str[t]&gt;='a'&amp;&amp;str[t]&lt;='z')
+        {
+            if(str[t]-ji&lt;'a')
+            {
+                cout&lt;&lt;(char)(str[t]+26-ji);
+            }
+            else
+            {
+                if(str[t]-ji&gt;'z')
+                {
+                    cout&lt;&lt;(char)(str[t]-26-ji);
+                }
+                else
+                {
+                    cout&lt;&lt;(char)(str[t]-ji);
+                }   
+            }
+            continue;
+        }
+        cout&lt;&lt;str[t];
+    }       
+}
+</code></pre>
+<hr>
 <p>
-题目详见:https://www.luogu.org/problem/show?pid=3152
+比赛详见:https://www.luogu.org/contestnew/show/7846
 </p>
 </div>
 
@@ -66,13 +242,13 @@ update on 2018-08-09<br/>
 #tree {
     line-height:30px;
     background-color:#eeeeee;
-    height:900px;
+    height:400%;
     width:10%;
     float:left;
     padding:5px; 
 }
 #main {
-    height:98%;
+    height:400%;
     width:88%;
     float:right;
     padding:10px;  

@@ -17,32 +17,26 @@
 </div>
 
 <div id="main">
-<h2>洛谷题解 P3152 【正整数序列】</h2>
+<h2>洛谷题解 AT244 【ハンバーガー(Hamburger)】</h2>
 <hr>
-<p>其实为什么要递归，直接整除除就好了</p>
-<p>规律仔细观察一下，答案其实是 a/2 ans次后等于0</p>
-<h2>附上代码QWQ~~~</h2>
-<hr />
-<pre><code class="language-cpp">#include&lt;iostream&gt;
+<p>很水，直接三目运算符判断，看不懂的自己了解一下三目运算符，附代码：</p>
+<pre><code>#include&lt;iostream&gt;
+namespace UMR//本人专属命名空间
+{
+    int a,b,c,d,n;
+}
 using namespace std;
+using namespace UMR;
 int main()
 {
-    long long ans=0,a,b,c;
-    cin&gt;&gt;a;
-    if(a==1)/*特判*/
-    {
-        cout&lt;&lt;-1&lt;&lt;endl;
-        return 0;
-    }
-    while(a/2!=0)
-    {
-        ans++;
-        a=a/2;
-    }
-    cout&lt;&lt;ans&lt;&lt;endl;/*输出*/
+    cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;n;//输入
+    (n*1-a&gt;=0)?cout&lt;&lt;n*1-a&lt;&lt;" ":cout&lt;&lt;0&lt;&lt;" ";//三目运算符
+    (n*2-b&gt;=0)?cout&lt;&lt;n*2-b&lt;&lt;" ":cout&lt;&lt;0&lt;&lt;" ";//三目运算符
+    (n*3-c&gt;=0)?cout&lt;&lt;n*3-c:cout&lt;&lt;0;//三目运算符
+    cout&lt;&lt;endl;
 }</code></pre>
 <p>
-题目详见:https://www.luogu.org/problem/show?pid=3152
+题目详见:https://www.luogu.org/problem/show?pid=AT244
 </p>
 </div>
 
