@@ -1,10 +1,9 @@
 <html>
 <meta charset="utf-8">
 <head>
-<title>YRC的Blog-首页</title>
+<title>YRC的Blog-文章</title>
 </head>
 <link rel="icon" href="images/icon.ico">
-
 <body>
 
 <div id="header">
@@ -18,16 +17,23 @@
 </div>
 
 <div id="main">
-<img src="images/main-yrc.png" height="200" width="200"/>
-<h1>YRC</h1>
+<h2>洛谷题解 P1421 【小玉买文具】</h2>
+<hr>
+<p>简洁，高效</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int a,b=19,c,zo=0,ans=0;
+    cin&gt;&gt;a&gt;&gt;c;
+    zo=a*10+c;
+    ans=zo/b;
+    cout&lt;&lt;ans&lt;&lt;endl;    
+} 
+</code></pre>
 <p>
-一个非常蒟的OIer
-</p>
-<p>
-来自China（这是当然的），第一次NOIP初赛比复赛线差了不到1分，然后悲剧了。今年又学了一堆乱七八糟的算法，什么DP、LCA、DIJ、Prim、SPFA......总之一头雾水。
-</p>
-<p>
-这个BLOG只是写来玩玩的而已，而且刚刚接触HTML和CSS，不足之处请谅解！
+题目详见:https://www.luogu.org/problem/show?pid=1421
 </p>
 </div>
 
@@ -52,19 +58,17 @@ update on 2018-08-06<br/>
     line-height:30px;
     background-color:#eeeeee;
     height:900px;
-    width:200px;
+    width:10%;
     float:left;
     padding:5px; 
 }
 #main {
-	text-align:center;
-	color:white;
-	font-weight:bold;
-    width:auto;
-	height:93%;
-    float:center;
-    padding:10px; 
-    background-image:url(images/background.jpeg);	
+    height:98%;
+    width:88%;
+    float:right;
+    padding:10px;  
+	float:center;
+	background-image:url(images/luogu.jpg);	
 }
 #footer {
     background-color:black;

@@ -1,12 +1,10 @@
 <html>
 <meta charset="utf-8">
 <head>
-<title>YRC的Blog-首页</title>
+<title>YRC的Blog-文章</title>
 </head>
 <link rel="icon" href="images/icon.ico">
-
 <body>
-
 <div id="header">
 <p>YRC的BLOG</p>
 </div>
@@ -17,18 +15,22 @@
 <a href="team.html">团队</a><br>
 </div>
 
-<div id="main">
-<img src="images/main-yrc.png" height="200" width="200"/>
-<h1>YRC</h1>
-<p>
-一个非常蒟的OIer
-</p>
-<p>
-来自China（这是当然的），第一次NOIP初赛比复赛线差了不到1分，然后悲剧了。今年又学了一堆乱七八糟的算法，什么DP、LCA、DIJ、Prim、SPFA......总之一头雾水。
-</p>
-<p>
-这个BLOG只是写来玩玩的而已，而且刚刚接触HTML和CSS，不足之处请谅解！
-</p>
+<div id="main">  
+<h1>文章</h1>
+<table border="1" bgcolor=#FFFFFF>
+<tr>
+  <th>ID</th>
+  <th>name</th>
+</tr>
+<tr>
+  <td>1000</td>
+  <td><a href="1000.html">洛谷题解 P1421 【小玉买文具】</a></td>
+</tr>
+<tr>
+  <td>1001</td>
+  <td><a href="1001.html">洛谷题解 P3152 【正整数序列】</a></td>
+</tr>
+</table>
 </div>
 
 <div id="footer">
@@ -40,7 +42,7 @@ update on 2018-08-06<br/>
 </body>
 <style>
 #header {
-    height:50px;
+	height:50px;
 	font-size:18px;
     font-weight:bold;
     background-color:#00BFFF;
@@ -51,20 +53,18 @@ update on 2018-08-06<br/>
 #tree {
     line-height:30px;
     background-color:#eeeeee;
-    height:900px;
-    width:200px;
+    height:100%;
+    width:10%;
     float:left;
-    padding:5px; 
+    padding:6px; 
 }
 #main {
-	text-align:center;
-	color:white;
-	font-weight:bold;
-    width:auto;
-	height:93%;
-    float:center;
-    padding:10px; 
-    background-image:url(images/background.jpeg);	
+    height:100%;
+    width:88%;
+    float:right;
+    padding:10px;  
+	float:center;
+	background-image:url(images/art.jpg);	
 }
 #footer {
     background-color:black;
