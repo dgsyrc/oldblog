@@ -1,7 +1,7 @@
 <html>
 <meta charset="utf-8">
 <head>
-<title>YRC的Blog-首页</title>
+<title>YRC的Blog-文章</title>
 </head>
 <link rel="icon" href="images/icon.ico">
 <body>
@@ -14,50 +14,150 @@
 <a href="index.html"><img src="images/home.png" height="70" width="70" alt="首页"/></a><br>
 <a href="article.html"><img src="images/article.png" height="70" width="70" alt="文章"/></a><br>
 <a href="team.html"><img src="images/team.png" height="70" width="70" alt="团队"/></a><br>
-<audio autoplay="autoplay" loop="loop" preload="auto" src="data/main.mp3">
-
 </div>
 
 <div id="main">
+<h2>干物妹！小埋！第三弹 比赛题解</h2>
+<hr>
+<h2>Problem A（小埋与NOIP）：</h2>
+<p>此题其实是计算加权平均数，模拟公式过程再输出最大值即可。</p>
+<p><img src="images/m3a.jpg" alt="" /></p>
+<p>附标程：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int main()
+{
+    string name[6];
+    int lv[1000]={0},s[6][1000]={0},sco[6]={0},a,alv=0,ansm=0,anss=0;
+    /*输入*/
+    cin&gt;&gt;a;
+    for(int b=1;b&lt;=a;b++)
+    {
+        cin&gt;&gt;lv[b];
+        alv=alv+lv[b];
+    }
+    for(int b=1;b&lt;=5;b++)
+    {
+        int p=0;
+        cin&gt;&gt;name[b];
+        /*模拟过程*/
+        for(int c=1;c&lt;=a;c++)
+        {
+            cin&gt;&gt;s[b][c];
+            p=p+s[b][c];
+        }
+        sco[b]=p/alv;
+        if(anss&lt;sco[b])/*比较*/
+        {
+            anss=sco[b];
+            ansm=b;/*最大值所在位置*/
+        }
+    }
+    cout&lt;&lt;name[ansm]&lt;&lt;endl;/*输出*/
+}</code></pre>
+<hr />
+<h2>Problem B（小埋与数羊）：</h2>
+<p>裸DP题，可以通过求从第一行出发后每个点所能得出的最大值，转移方程为：q[a][b]=max(q[a][b],q[a-1][c]+_map[a][b]);</p>
+<p>附标程（效率还是比较低，没压缩）：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+using namespace std;
+int pa,ans;
+int n,_map[100010][5]={0},q[100010][5]={0};
+int main()
+{
+  cin&gt;&gt;n;
+  for(int a=1;a&lt;=n;a++)
+  {
+    for(int b=1;b&lt;=4;b++)
+    {
+      cin&gt;&gt;_map[a][b];
+      q[a][b]=_map[a][b];
+    }
+  }
+  pa=0;
+  for(int a=2;a&lt;=n;a++)
+  {
+    for(int b=1;b&lt;=4;b++)
+    {
+      for(int c=1;c&lt;=4;c++)
+      {
+        if(b==c)
+        {
+          continue;
+        }
+        else
+        {
+          q[a][b]=max(q[a][b],q[a-1][c]+_map[a][b]);
+        }
+      }
+    }
+  }
+  for(int a=1;a&lt;=4;a++)
+  {
+    ans=max(q[n][a],ans);
+  }
+  cout&lt;&lt;ans&lt;&lt;endl;
+}
+</code></pre>
+<hr />
+<h2>Problem C（小埋与二分法）：</h2>
+<p>又是字符串，不过这次复杂了很多，但脑洞就没有上次的Problem C（<a href="https://www.luogu.org/problemnew/show/T32632">小埋与TSF的密信</a>）那么大，可能很多人提交之后都会怀疑数据有问题，那你就错了，其实你们题目可能漏了一点没有看，那就是：</p>
+<h3>输入数据是密文！</h3>
+<p>本题的题意其实是让你按照加密过程的逆过程来解密，可能有人会连加密过程都看不懂，那我就图解一下吧：</p>
+<p><img src="images/m3c.jpg" alt="" /></p>
+<h3>再简单点说其实就是先序遍历转中序遍历</h3>
+<p>附标程：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+char a[201000],s[201000];
+int k;
+
+void dg(int l,int r)/*“逆”二分*/
+{
+    int mid=(l+r)&gt;&gt;1;/*位运算&gt;&gt;1其实是div2*/
+    a[mid]=s[k];
+    k++;
+    if (l&lt;mid)
+    {
+        dg(l,mid-1);
+    }
+    if (r&gt;mid)
+    {
+        dg(mid+1,r);
+    }
+}
+
+int main()
+{
+
+    k=0;
+    scanf("%s",s);/*输入*/
+    int l=strlen(s)-1;
+    dg(0,l);
+    /*输出*/
+    for (int i=0;i&lt;=l;i++) 
+    {
+        printf("%c",a[i]);
+    }
+    printf("\n");
+}
+</code></pre>
+<hr>
 <p>
-.
-</p>
-<p>
-.
-</p>
-<p>
-.
-</p>
-<img src="images/main-yrc.png" height="200" width="200"/>
-<h1>YRC</h1>
-<p>
-<strong>一个非常蒟的OIer</strong>
-</p>
-<p>
- <strong>来自China（这是当然的），第一次NOIP初赛比复赛线差了不到1分，然后悲剧了。今年又学了一堆乱七八糟的算法，什么DP、LCA、DIJ、Prim、SPFA......总之一头雾水。</strong>
-</p>
-<p>
- <strong>这个BLOG只是写来玩玩的而已，而且刚刚接触HTML和CSS，不足之处请谅解！</strong>
-</p>
-<p>
-Identity:  Student|<a href="https://www.luogu.org/space/show?uid=89910"><font color="white">OIer</font></a>|<a href="http://i.youku.com/yrcminecraft"><font color="white">Live owner</font></a>|Student President
+比赛详见:https://www.luogu.org/contestnew/show/9387
 </p>
 </div>
 
 <div id="footer">
 Copyright dgsyrc.github.io<br/>
-update on 2018-08-09<br/>
+update on 2018-08-13<br/>
  <br/>
 </div>
 
 </body>
 <style>
-a{
-	TEXT-DECORATION:none;
-}
-a:hover{
-	TEXT-DECORATION:underline;
-}
 #header {
     height:50px;
 	font-size:18px;
@@ -68,23 +168,20 @@ a:hover{
 	line-height:50px;
 }
 #tree {
-	text-align:center;
     line-height:30px;
-    background-color:#FF8000;
-    height:900px;
+    background-color:#DF0101;
+    height:321%;
     width:70px;
     float:left;
-    padding:5px; 
+    padding:6px;  
 }
 #main {
-	text-align:center;
-	color:white;
-    width:auto;
-	height:93%;
-    float:center;
-    padding:10px; 
-    background-image:url(images/background.jpeg);	
-	link-
+    height:320%;
+    width:94%;
+    float:left;
+    padding:10px;  
+	float:center;
+	background-image:url(images/luogu.jpg);	
 }
 #footer {
     background-color:black;
