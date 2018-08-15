@@ -5,6 +5,7 @@
 </head>
 <link rel="icon" href="images/icon.ico">
 <body>
+
 <div id="header">
 <p>YRC的BLOG</p>
 </div>
@@ -15,54 +16,42 @@
 <a href="team.html"><img src="images/team.png" height="70" width="70" alt="团队"/></a><br>
 </div>
 
-<div id="main">  
-<h1>文章</h1>
-<table border="1" bgcolor=#FFFFFF width="650" style="text-align:center" >
-<tr>
-  <th>ID</th>
-  <th>name</th>
-</tr>
-<tr>
-  <td>1000</td>
-  <td><a href="1000.html" style="color:black;text-decoration:none;">洛谷题解 P1421 【小玉买文具】</a></td>
-</tr>
-<tr>
-  <td>1001</td>
-  <td><a href="1001.html" style="color:black;text-decoration:none;">洛谷题解 P3152 【正整数序列】</a></td>
-</tr>
-<tr>
-  <td>1002</td>
-  <td><a href="1002.html" style="color:black;text-decoration:none;">洛谷题解 AT244 【ハンバーガー(Hamburger)】</a></td>
-</tr>
-<tr>
-  <td>1003</td>
-  <td><a href="1003.html" style="color:black;text-decoration:none;">UMR IT Team 团队守则</a></td>
-</tr>
-<tr>
-  <td>1004</td>
-  <td><a href="1004.html" style="color:black;text-decoration:none;">干物妹！小埋！第二弹 比赛题解</a></td>
-</tr>
-<tr>
-  <td>1005</td>
-  <td><a href="1005.html" style="color:black;text-decoration:none;">干物妹！小埋！第三弹 比赛题解</a></td>
-</tr>
-<tr>
-  <td>1006</td>
-  <td><a href="1006.html" style="color:black;text-decoration:none;">如何使用github搭建一个个人图床</a></td>
-</tr>
-</table>
+<div id="main">
+<h2>如何使用github搭建一个个人图床</h2>
+<hr>
+<p>相信很多洛谷的伙伴们都很喜欢发图，发图最重要的是图床。</p>
+<p>但是，现在我要介绍的是一种无水印原图的图床，我们要借助github这个平台来搭。</p>
+<p>github的好处在于它会给每个用户分配一个域名，域名的分配规则是：</p>
+<h2>你的github用户名.github.io</h2>
+<p>注意：用户名尽量用英文。</p>
+<p>翻译：</p>
+<p>repositories 存储库</p>
+<hr />
+<h3>1.在github上注册一个账号后点击右上角的Your repositories:</h3>
+<p><img src="images/1006/-1.png" alt="" /></p>
+<h3>2.进入repositories界面后点击new创建一个新的存储库，建议存储库命名为：你的github用户名.github.io（如果你已经使用了该存储库那就可以自定义，但是后面的图片链接会有一点不同）</h3>
+<p><img src="images/1006/0.png" alt="" /></p>
+<h3>3.创建成功后，先建立一个README文件</h3>
+<p><img src="images/1006/1.png" alt="" /></p>
+<h3>4.随后点击上方的Setting并往下拉，去到GitHub Pages设置项，把Source项设定为master branch（如若已设定好则不必改动）</h3>
+<p><img src="images/1006/3.png" alt="" /></p>
+<h3>5.最后就可以到存储库里存图了，上传会有几率失败，要多试几次</h3>
+<p><img src="images/1006/4.png" alt="" /></p>
+<h3>6.上传完成后即可到你的https://github用户名.github.io/你的图片名（加后缀名） 来查看图片了，可以将本链接作为图片链接用到Markdown上。（如果开始你的存储库名是你自定义的，就要把链接改成https://github用户名.github.io/存储库名/你的图片名（加后缀名））</h3>
+<p><img src="images/1006/5.png" alt="" /></p>
+<h4>当然，github也是可以搭建网站的。</h4>
 </div>
 
 <div id="footer">
 Copyright dgsyrc.github.io<br/>
-update on 2018-08-09<br/>
+update on 2018-08-13<br/>
  <br/>
 </div>
 
 </body>
 <style>
 #header {
-	height:50px;
+    height:50px;
 	font-size:18px;
     font-weight:bold;
     background-color:#00BFFF;
@@ -72,19 +61,19 @@ update on 2018-08-09<br/>
 }
 #tree {
     line-height:30px;
-    background-color:#DF0101;
-    height:100%;
+    background-color:#eeeeee;
+    height:451%;
     width:70px;
     float:left;
-    padding:6px; 
+    padding:5px; 
 }
 #main {
-    height:99%;
+    height:450%;
     width:94%;
     float:left;
     padding:10px;  
 	float:center;
-	background-image:url(images/art.jpg);	
+	background-image:url(images/luogu.jpg);	
 }
 #footer {
     background-color:black;
