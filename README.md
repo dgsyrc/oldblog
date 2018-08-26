@@ -1,6 +1,7 @@
 ## YRC的Blog
 ### 是一个基于Github的存储库搭建的博客
 ### 基于代码HTML、CSS
+### 创建于2018年8月
 ### 博客访问链接：http://yrcminecraft.ac.cn 或 https://dgsyrc.github.io
 ------------------------------
 ### 更新日志：
