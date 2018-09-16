@@ -1,0 +1,84 @@
+<html>
+<meta charset="utf-8">
+<head>
+<title>YRC的Blog-文章</title>
+</head>
+<link rel="icon" href="images/icon.ico">
+<body style="margin: 0px!important">
+
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="header.html" height="6%" width="100%"></iframe>
+<hr color="#2ECCFA"/>
+
+<div id="main">
+
+<div id="t">
+<h2>洛谷题解 P3955 【图书管理员】</h2>
+<hr>
+<p>本题很水，不知我17年是怎么想的，没做出来，结果这次不到10min一遍AC。</p>
+<p>其实这道题无需排序直接对每一次询问进行比较就好了（反正数据不大，用不上字符串），具体解析看代码吧。</p>
+<p>附代码：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+int n,q,nl[1001],ql[1001],qsl[1001];/*n为图书馆里书的数量，q为读者的数量，nl是书的编码，ql是询问的编码，qsl是询问的编码的长度*/
+int main()
+{
+    cin&gt;&gt;n&gt;&gt;q;/*输入*/
+    for(int a=1;a&lt;=n;a++)
+    {
+        cin&gt;&gt;nl[a];/*读入书的编码*/
+    }
+    for(int a=1;a&lt;=q;a++)
+    {
+        int ans=-1,k=1;
+        cin&gt;&gt;qsl[a];/*读入询问编码的长度*/
+        cin&gt;&gt;ql[a];/*读入询问的编码*/
+        for(int c=1;c&lt;=qsl[a];c++)/*处理比较的数位*/
+        {
+            k=k*10;
+        }
+        for(int b=1;b&lt;=n;b++)/*逐书比较*/
+        {
+            if(nl[b]%k==ql[a])/*取书的编码的末qsl[a]位与询问编码比较*/
+            {
+                if(ans==-1||(ans&gt;nl[b]))/*判断是否未找到或是否比已找到的小*/
+                {
+                    ans=nl[b];/*读入已知书编码最小值*/
+                }
+            }
+        }
+        cout&lt;&lt;ans&lt;&lt;endl;/*输出*/
+    }
+}
+</code></pre>
+<hr>
+<p>
+题目详见:https://www.luogu.org/problemnew/show/P3955
+</p>
+</div>
+</div>
+
+<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="footer.html" height="10%" width="100%"></iframe>
+
+</body>
+<style>
+#main {
+    height:96%;
+    width:100%;
+    float:center;
+	background:url("images/art2.jpeg")no-repeat center center;
+	background-size:cover;
+}
+#t {
+   background-color:rgba(255,255,255,0.8);
+   text-align:left;
+   padding:10px;
+   width:60%;
+   height:auto;
+   float:center;
+   margin:auto;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+</style>
